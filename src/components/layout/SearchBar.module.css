@@ -1,0 +1,121 @@
+.searchContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tabs {
+  display: flex;
+  gap: 32px;
+  margin-bottom: 16px;
+}
+
+.tab {
+  background: none;
+  border: none;
+  font-size: 16px;
+  font-weight: 500;
+  color: #717171;
+  cursor: pointer;
+  padding: 8px 0;
+  position: relative;
+  font-family: 'Inter', 'Circular', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.tab:hover {
+  color: #222222;
+}
+
+.activeTab {
+  color: #222222 !important;
+}
+
+.activeTab::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: #222222;
+}
+
+.searchBar {
+  display: flex;
+  align-items: center;
+  background: #ffffff;
+  border: 1px solid #dddddd;
+  border-radius: 40px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.2s ease;
+}
+
+.searchBar:hover {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.18);
+}
+
+.searchItem {
+  display: flex;
+  flex-direction: column;
+  padding: 14px 24px;
+  min-width: 0;
+  flex: 1;
+}
+
+.searchItem:hover {
+  background-color: #ebebeb;
+  border-radius: 32px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #222222;
+  margin-bottom: 2px;
+  font-family: 'Inter', 'Circular', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.input {
+  border: none;
+  background: none;
+  font-size: 14px;
+  color: #717171;
+  outline: none;
+  width: 100%;
+  font-family: 'Inter', 'Circular', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.input::placeholder {
+  color: #717171;
+}
+
+.separator {
+  width: 1px;
+  height: 32px;
+  background-color: #dddddd;
+}
+
+.searchButton {
+  background: #ff385c;
+  border: none;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.searchButton:hover {
+  background: #dd0e41;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .searchContainer {
+    display: none;
+  }
+}

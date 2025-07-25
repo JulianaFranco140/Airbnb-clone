@@ -1,0 +1,56 @@
+.inputGroup {
+  margin-bottom: 16px;
+}
+
+.label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: #222222;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-family: 'Inter', 'Circular', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.input {
+  width: 100%;
+  padding: 11px 12px;
+  border: 1px solid #b0b0b0;
+  border-radius: 8px;
+  font-size: 16px;
+  font-family: 'Inter', 'Circular', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  box-sizing: border-box;
+  background: #ffffff;
+  color: black
+}
+
+.input:focus {
+  outline: none;
+  border-color: #222222;
+  box-shadow: 0 0 0 2px #222222;
+}
+
+.input:hover:not(:focus) {
+  border-color: #717171;
+}
+
+.input::placeholder {
+  color: #b0b0b0;
+  font-weight: 400;
+}
+
+.input.error {
+  border-color: #ff385c;
+  box-shadow: 0 0 0 2px rgba(255, 56, 92, 0.2);
+}
+
+.errorText {
+  display: block;
+  color: #c13515;
+  font-size: 12px;
+  font-weight: 400;
+  margin-top: 4px;
+  font-family: 'Inter', 'Circular', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}

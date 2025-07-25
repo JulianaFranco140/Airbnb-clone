@@ -1,0 +1,269 @@
+.page {
+  min-height: 100vh;
+  background-color: #ffffff;
+}
+
+.main {
+  padding: 0;
+}
+
+/* Hero Section */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 80px 24px;
+  gap: 60px;
+}
+
+.heroContent {
+  flex: 1;
+}
+
+.heroTitle {
+  font-size: 56px;
+  font-weight: 700;
+  color: #222222;
+  margin: 0 0 16px 0;
+  line-height: 1.1;
+  font-family: 'Inter', 'Circular', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.priceDisplay {
+  display: flex;
+  align-items: baseline;
+  margin-bottom: 16px;
+}
+
+.currency {
+  font-size: 56px;
+  font-weight: 300;
+  color: #222222;
+  font-family: 'Inter', 'Circular', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.amount {
+  font-size: 56px;
+  font-weight: 700;
+  color: #222222;
+  font-family: 'Inter', 'Circular', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.period {
+  font-size: 24px;
+  font-weight: 400;
+  color: #717171;
+  margin-left: 8px;
+  font-family: 'Inter', 'Circular', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.heroSubtitle {
+  font-size: 18px;
+  color: #717171;
+  margin: 0 0 32px 0;
+  font-family: 'Inter', 'Circular', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.startButton {
+  background: linear-gradient(135deg, #e61e4d 0%, #e31c5f 50%, #d70466 100%);
+  color: #ffffff;
+  text-decoration: none;
+  padding: 16px 32px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 16px;
+  transition: all 0.2s ease;
+  display: inline-block;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.05);
+  font-family: 'Inter', 'Circular', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.startButton:hover {
+  background: linear-gradient(135deg, #d70466 0%, #e31c5f 50%, #e61e4d 100%);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.18);
+  transform: translateY(-1px);
+}
+
+.heroImage {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.placeholderImage {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Benefits Section */
+.benefits {
+  background-color: #f7f7f7;
+  padding: 80px 24px;
+}
+
+.sectionTitle {
+  font-size: 32px;
+  font-weight: 700;
+  color: #222222;
+  text-align: center;
+  margin: 0 0 48px 0;
+  font-family: 'Inter', 'Circular', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.benefitsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 40px;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.benefit {
+  text-align: center;
+}
+
+.benefitIcon {
+  margin: 0 auto 24px auto;
+  width: 48px;
+  height: 48px;
+}
+
+.benefit h3 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #222222;
+  margin: 0 0 16px 0;
+  font-family: 'Inter', 'Circular', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.benefit p {
+  font-size: 16px;
+  color: #717171;
+  line-height: 1.5;
+  margin: 0;
+  font-family: 'Inter', 'Circular', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Steps Section */
+.steps {
+  padding: 80px 24px;
+}
+
+.stepsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 40px;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.step {
+  text-align: center;
+}
+
+.stepNumber {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #ff385c;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 auto 24px auto;
+  font-family: 'Inter', 'Circular', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.step h3 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #222222;
+  margin: 0 0 16px 0;
+  font-family: 'Inter', 'Circular', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.step p {
+  font-size: 16px;
+  color: #717171;
+  line-height: 1.5;
+  margin: 0;
+  font-family: 'Inter', 'Circular', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* CTA Section */
+.cta {
+  background: linear-gradient(135deg, #e61e4d 0%, #e31c5f 50%, #d70466 100%);
+  color: #ffffff;
+  padding: 80px 24px;
+  text-align: center;
+}
+
+.ctaContent h2 {
+  font-size: 32px;
+  font-weight: 700;
+  margin: 0 0 32px 0;
+  font-family: 'Inter', 'Circular', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.ctaButton {
+  background: #ffffff;
+  color: #222222;
+  text-decoration: none;
+  padding: 16px 32px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 16px;
+  transition: all 0.2s ease;
+  display: inline-block;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.05);
+  font-family: 'Inter', 'Circular', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.ctaButton:hover {
+  background: #f7f7f7;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.18);
+  transform: translateY(-1px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    padding: 40px 16px;
+    gap: 40px;
+  }
+  
+  .heroTitle {
+    font-size: 32px;
+  }
+  
+  .currency,
+  .amount {
+    font-size: 32px;
+  }
+  
+  .period {
+    font-size: 18px;
+  }
+  
+  .benefits,
+  .steps,
+  .cta {
+    padding: 40px 16px;
+  }
+  
+  .sectionTitle {
+    font-size: 24px;
+  }
+  
+  .benefitsGrid,
+  .stepsGrid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}

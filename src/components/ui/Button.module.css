@@ -1,0 +1,124 @@
+/* Botón base */
+.button {
+  width: 100%;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: 'Inter', 'Circular', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 14px 24px;
+  position: relative;
+  transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  overflow: hidden;
+}
+
+.button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.button:not(:disabled):hover {
+  transform: scale(1.02);
+}
+
+.button:not(:disabled):active {
+  transform: scale(0.98);
+}
+
+/* Variante primaria (Airbnb) */
+.primary {
+  background: linear-gradient(90deg, #e61e4d 0%, #e31c5f 50%, #d70466 100%);
+  color: white;
+}
+
+.primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, #d70466 0%, #bd1e59 50%, #a91b47 100%);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.primary:hover:not(:disabled)::before {
+  opacity: 1;
+}
+
+/* Variante secundaria */
+.secondary {
+  background: #ffffff;
+  color: #222222;
+  border: 1px solid #222222;
+}
+
+.secondary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #f7f7f7;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.secondary:hover:not(:disabled)::before {
+  opacity: 1;
+}
+
+/* Variante social */
+.social {
+  background: #ffffff;
+  color: #222222;
+  border: 1px solid #222222;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.social:last-child {
+  margin-bottom: 0;
+}
+
+.social::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #f7f7f7;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.social:hover:not(:disabled)::before {
+  opacity: 1;
+}
+
+/* Estado de carga */
+.loading {
+  background: #717171 !important;
+}
+
+.loading::before {
+  display: none;
+}
+
+/* Contenido del botón */
+.content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
