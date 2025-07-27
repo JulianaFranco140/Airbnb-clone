@@ -1,8 +1,5 @@
-export const metadata = {
-  title: 'Iniciar Sesión - Airbnb',
-  description: 'Inicia sesión en tu cuenta de Airbnb para acceder a tus reservas y experiencias.',
-};
+import AuthLayout from '../../components/auth/AuthLayout';
 
 export default function LoginLayout({ children }) {
-  return children;
+  return <AuthLayout>{children}</AuthLayout>;
 }

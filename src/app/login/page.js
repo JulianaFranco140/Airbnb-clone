@@ -3,11 +3,9 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import AuthLayout from '../../components/auth/AuthLayout';
 import AuthHeader from '../../components/auth/AuthHeader';
 import Input from '../../components/ui/Input';
 import Button from '../../components/ui/Button';
-import SocialLogin from '../../components/auth/SocialLogin';
 import styles from './login.module.css';
 
 export default function LoginPage() {
@@ -41,7 +39,7 @@ export default function LoginPage() {
     }
 
     try {
-      // Login SÚPER simple con PostgreSQL
+      // Login simple con PostgreSQL
       const response = await fetch('/api/auth/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -50,7 +48,7 @@ export default function LoginPage() {
 
       if (response.ok) {
         const { user } = await response.json();
-        // Guardar usuario en localStorage (SIN TOKEN)
+        // Guardar usuario en localStorage
         localStorage.setItem('user', JSON.stringify(user));
         router.push('/');
       } else {
@@ -64,14 +62,9 @@ export default function LoginPage() {
     }
   };
 
-  const handleSocialLogin = (provider) => {
-    // Aquí implementarás la lógica de login social
-    console.log(`Login with ${provider}`);
-  };
-
   return (
-    <AuthLayout>
-      <AuthHeader 
+    <>
+      <AuthHeader
         title="Iniciar sesión"
         subtitle="¡Te damos la bienvenida a Airbnb!"
       />
@@ -118,8 +111,6 @@ export default function LoginPage() {
         </Button>
       </form>
 
-      <SocialLogin onSocialLogin={handleSocialLogin} />
-
       <div className={styles.signupLink}>
         <p>
           ¿No tienes una cuenta?{' '}
@@ -128,6 +119,6 @@ export default function LoginPage() {
           </Link>
         </p>
       </div>
-    </AuthLayout>
+    </>
   );
 }

@@ -12,7 +12,7 @@ export default function Header() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Verificar si hay un usuario logueado (SÚPER SIMPLE)
+    // Verificar si hay un usuario logueado
     const userData = localStorage.getItem('user');
     if (userData) {
       try {
@@ -25,7 +25,7 @@ export default function Header() {
   }, []);
 
   const handleLogout = () => {
-    // Logout súper simple
+    // Logout simple
     localStorage.removeItem('user');
     setUser(null);
     window.location.reload(); // Recargar página para limpiar estado

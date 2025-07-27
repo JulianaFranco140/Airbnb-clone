@@ -1,8 +1,5 @@
-export const metadata = {
-  title: 'Recuperar Contraseña - Airbnb',
-  description: 'Restablece tu contraseña de Airbnb de forma segura.',
-};
+import AuthLayout from '../../components/auth/AuthLayout';
 
 export default function ForgotPasswordLayout({ children }) {
-  return children;
+  return <AuthLayout>{children}</AuthLayout>;
 }

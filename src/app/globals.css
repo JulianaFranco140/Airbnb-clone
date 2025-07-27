@@ -1,26 +1,26 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
+/* Siempre tema claro */
 :root {
   --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --foreground: #222222;
+  --airbnb-red: #ff385c;
+  --airbnb-gray: #717171;
+  --airbnb-light-gray: #f7f7f7;
+  --airbnb-border: #dddddd;
 }
 
 html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
+  background: #ffffff;
+  color: #222222;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
+  color: #222222;
+  background: #ffffff;
   font-family: 'Inter', 'Circular', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -35,10 +35,4 @@ body {
 a {
   color: inherit;
   text-decoration: none;
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
 }

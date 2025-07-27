@@ -45,13 +45,6 @@ export default function UserMenu({ user, onLogout, loading }) {
         Pon tu espacio en Airbnb
       </Link>
 
-      {/* Selector de idioma */}
-      <button className={styles.languageButton}>
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-          <path d="M8 1C4.13 1 1 4.13 1 8s3.13 7 7 7 7-3.13 7-7-3.13-7-7-7zM8 13.93c-.61-.35-1.16-.89-1.56-1.56-.3-.51-.53-1.07-.68-1.67h4.48c-.15.6-.38 1.16-.68 1.67-.4.67-.95 1.21-1.56 1.56zM5.05 10.7c-.14-.54-.22-1.11-.22-1.7s.08-1.16.22-1.7h5.9c.14.54.22 1.11.22 1.7s-.08 1.16-.22 1.7H5.05zM2.5 8c0-.59.08-1.16.22-1.7h4.48c-.15-.6-.38-1.16-.68-1.67C5.95 4.11 5.39 3.57 4.78 3.22 3.39 4.39 2.5 6.09 2.5 8zm6.22-4.78c.61.35 1.16.89 1.56 1.56.3.51.53 1.07.68 1.67H6.48c.15-.6.38-1.16.68-1.67.4-.67.95-1.21 1.56-1.56zM13.5 8c0-1.91-.89-3.61-2.28-4.78.61.35 1.16.89 1.56 1.56.3.51.53 1.07.68 1.67h1.7c-.14-.59-.22-1.16-.22-1.7-.58-1.16-1.4-2.17-2.37-2.93z" fill="currentColor"/>
-        </svg>
-      </button>
-
       {/* Menu de usuario */}
       <div className={styles.userMenu} ref={menuRef}>
         <button 
@@ -74,7 +67,7 @@ export default function UserMenu({ user, onLogout, loading }) {
               )
             ) : (
               <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                <path d="M10 2C6.69 2 4 4.69 4 8c0 1.02.26 1.98.72 2.83L10 18l5.28-7.17c.46-.85.72-1.81.72-2.83 0-3.31-2.69-6-6-6zm0 8c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z" fill="currentColor"/>
+                <path d="M10 2a4 4 0 100 8 4 4 0 000-8zM6 14a4 4 0 00-4 4v2h16v-2a4 4 0 00-4-4H6z" fill="currentColor"/>
               </svg>
             )}
           </div>

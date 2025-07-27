@@ -1,36 +1,39 @@
-import { Pool } from 'pg';
+import { neon } from '@neondatabase/serverless';
 
-const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
-  ssl: {
-    rejectUnauthorized: false
+// Función para obtener el cliente de NeonDB
+const getSql = () => {
+  if (!process.env.DATABASE_URL) {
+    throw new Error('DATABASE_URL is not set');
   }
-});
+  return neon(process.env.DATABASE_URL);
+};
 
-export { pool };
-
-// Función para ejecutar queries
 export const query = async (text, params) => {
-  const client = await pool.connect();
   try {
-    const result = await client.query(text, params);
-    return result;
+    const sql = getSql();
+    
+    // Para queries con parámetros, usar sql.query()
+    if (params && params.length > 0) {
+      const result = await sql.query(text, params);
+      return result;
+    } else {
+      // Para queries simples, usar template literal
+      const result = await sql`${sql.unsafe(text)}`;
+      return result;
+    }
   } catch (error) {
     console.error('Database query error:', error);
     throw error;
-  } finally {
-    client.release();
   }
 };
 
-// Función para verificar la conexión
 export const testConnection = async () => {
   try {
-    const result = await query('SELECT NOW()');
-    console.log('Database connected successfully:', result.rows[0]);
+    const sql = getSql();
+    const result = await sql`SELECT NOW() as current_time`;
     return true;
   } catch (error) {
     console.error('Database connection failed:', error);
-    return false;
+    throw error;
   }
 };

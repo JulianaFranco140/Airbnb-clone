@@ -8,22 +8,6 @@ export default function SearchBar() {
 
   return (
     <div className={styles.searchContainer}>
-      {/* Tabs */}
-      <div className={styles.tabs}>
-        <button 
-          className={`${styles.tab} ${activeTab === 'stays' ? styles.activeTab : ''}`}
-          onClick={() => setActiveTab('stays')}
-        >
-          Estadías
-        </button>
-        <button 
-          className={`${styles.tab} ${activeTab === 'experiences' ? styles.activeTab : ''}`}
-          onClick={() => setActiveTab('experiences')}
-        >
-          Experiencias
-        </button>
-      </div>
-
       {/* Search Bar */}
       <div className={styles.searchBar}>
         <div className={styles.searchItem}>

@@ -20,22 +20,14 @@ export async function POST(request) {
       [email.toLowerCase()]
     );
 
-    if (result.rows.length === 0) {
+    if (result.length === 0) {
       return NextResponse.json(
         { error: 'Usuario no encontrado' },
         { status: 401 }
       );
     }
 
-    const user = result.rows[0];
-
-    // Verificar contraseña
-    if (!user.password_hash) {
-      return NextResponse.json(
-        { error: 'Este usuario fue registrado con redes sociales' },
-        { status: 401 }
-      );
-    }
+    const user = result[0];
 
     const isPasswordValid = await bcryptjs.compare(password, user.password_hash);
 
@@ -46,7 +38,7 @@ export async function POST(request) {
       );
     }
 
-    // Preparar datos del usuario (sin password) - SIN JWT
+    // Preparar datos del usuario (sin password)
     const userData = {
       id: user.id,
       email: user.email,
@@ -58,7 +50,7 @@ export async function POST(request) {
       isVerified: user.is_verified
     };
 
-    // Respuesta SÚPER simple
+    // Respuesta simple
     return NextResponse.json({
       success: true,
       message: 'Inicio de sesión exitoso',

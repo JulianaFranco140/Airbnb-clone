@@ -10,6 +10,12 @@
   letter-spacing: -0.02em;
 }
 
+.logoImage {
+  height: 1.5em;
+  vertical-align: middle;
+  padding-inline: 5px;
+}
+
 .small {
   font-size: 24px;
 }

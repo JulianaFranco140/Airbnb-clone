@@ -2,6 +2,7 @@
   "name": "airbnbclone",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
@@ -9,6 +10,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@neondatabase/serverless": "^1.0.1",
     "@types/pg": "^8.15.4",
     "bcryptjs": "^3.0.2",
     "dotenv": "^17.2.1",

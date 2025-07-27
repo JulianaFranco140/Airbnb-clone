@@ -3,12 +3,9 @@ import bcryptjs from 'bcryptjs';
 import { query } from '../../../../lib/db';
 
 export async function POST(request) {
-  console.log('=== Register API called ===');
-  
   try {
     const body = await request.json();
-    console.log('Request body received:', { ...body, password: '***' });
-    
+
     const { firstName, lastName, email, password } = body;
 
     // Validaciones básicas
@@ -61,9 +58,9 @@ export async function POST(request) {
       [email.toLowerCase(), passwordHash, firstName, lastName]
     );
 
-    const newUser = result.rows[0];
+    const newUser = result[0];
 
-    // Preparar datos del usuario (SIN JWT)
+    // Preparar datos del usuario
     const userData = {
       id: newUser.id,
       email: newUser.email,
@@ -73,7 +70,7 @@ export async function POST(request) {
       isVerified: newUser.is_verified
     };
 
-    // Respuesta SÚPER simple
+    // Respuesta simple
     return NextResponse.json({
       success: true,
       message: 'Usuario registrado exitosamente',
