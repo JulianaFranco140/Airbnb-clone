@@ -39,7 +39,7 @@ export async function POST(request) {
       [email.toLowerCase()]
     );
 
-    if (existingUser.rows.length > 0) {
+    if (existingUser.length > 0) {
       return NextResponse.json(
         { error: 'Ya existe una cuenta con este email' },
         { status: 409 }
