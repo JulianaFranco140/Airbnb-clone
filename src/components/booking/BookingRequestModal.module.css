@@ -1,0 +1,209 @@
+/* Modal Overlay */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+/* Modal Container */
+.modal {
+  background: white;
+  border-radius: 12px;
+  max-width: 500px;
+  width: 100%;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  animation: modalSlideIn 0.3s ease-out;
+}
+
+@keyframes modalSlideIn {
+  from {
+    transform: scale(0.95) translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 24px 16px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.header h2 {
+  color: #111827;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  color: #6b7280;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.closeButton:hover {
+  background-color: #f3f4f6;
+  color: #374151;
+}
+
+/* Content */
+.content {
+  padding: 24px;
+}
+
+.requestInfo {
+  margin-bottom: 24px;
+}
+
+.message {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #374151;
+  margin: 0;
+  text-align: center;
+  padding: 16px;
+  background-color: #f9fafb;
+  border-radius: 8px;
+  border-left: 4px solid #ff5a5f;
+}
+
+.message strong {
+  color: #111827;
+  font-weight: 600;
+}
+
+/* Booking Details */
+.bookingDetails {
+  margin-bottom: 32px;
+}
+
+.bookingDetails h3 {
+  color: #111827;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0 0 16px 0;
+}
+
+.detailItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.detailItem:last-child {
+  border-bottom: none;
+  font-weight: 600;
+  color: #111827;
+}
+
+.label {
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.value {
+  color: #111827;
+  font-weight: 500;
+}
+
+/* Actions */
+.actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+}
+
+.confirmButton,
+.cancelButton {
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+  min-width: 120px;
+}
+
+.confirmButton {
+  background-color: #00a699;
+  color: white;
+}
+
+.confirmButton:hover:not(:disabled) {
+  background-color: #008a80;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 166, 153, 0.3);
+}
+
+.cancelButton {
+  background-color: #ff5a5f;
+  color: white;
+}
+
+.cancelButton:hover:not(:disabled) {
+  background-color: #e04e53;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(255, 90, 95, 0.3);
+}
+
+.confirmButton:disabled,
+.cancelButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .overlay {
+    padding: 16px;
+  }
+  
+  .modal {
+    max-height: 90vh;
+  }
+  
+  .header,
+  .content {
+    padding: 20px;
+  }
+  
+  .actions {
+    flex-direction: column;
+  }
+  
+  .confirmButton,
+  .cancelButton {
+    width: 100%;
+  }
+  
+  .message {
+    font-size: 1rem;
+    padding: 12px;
+  }
+}

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import BookingRequestModal from "./BookingRequestModal";
 import styles from "./BookingForm.module.css";
 
 export default function BookingForm({ property }) {
@@ -12,6 +13,10 @@ export default function BookingForm({ property }) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
+  const [bookingId, setBookingId] = useState(null);
+  const [bookingStatus, setBookingStatus] = useState("");
+  const [showModal, setShowModal] = useState(false);
+  const [bookingRequestData, setBookingRequestData] = useState(null);
 
   const calculateNights = () => {
     if (bookingData.checkIn && bookingData.checkOut) {
@@ -81,6 +86,26 @@ export default function BookingForm({ property }) {
 
       if (response.ok) {
         setSuccess(true);
+        setBookingId(data.booking.id);
+        setBookingStatus(data.booking.status);
+
+        // Preparar datos para el modal
+        setBookingRequestData({
+          bookingId: data.booking.id,
+          hostName: data.booking.hostName,
+          guestName: data.booking.guestName,
+          propertyTitle: data.booking.propertyTitle,
+          checkIn: bookingData.checkIn,
+          checkOut: bookingData.checkOut,
+          guests: bookingData.guests,
+          totalPrice: calculateTotal(),
+        });
+
+        // Mostrar modal después de un breve delay
+        setTimeout(() => {
+          setShowModal(true);
+        }, 1500);
+
         setBookingData({
           checkIn: "",
           checkOut: "",
@@ -93,6 +118,44 @@ export default function BookingForm({ property }) {
       setError("Error de conexión. Intenta nuevamente.");
     } finally {
       setLoading(false);
+    }
+  };
+
+  const handleConfirmBooking = async () => {
+    try {
+      const response = await fetch(`/api/bookings/${bookingId}/confirm`, {
+        method: "PATCH",
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setBookingStatus("confirmed");
+        alert("¡Reserva confirmada exitosamente!");
+      } else {
+        alert(data.message || "Error al confirmar la reserva");
+      }
+    } catch (error) {
+      alert("Error de conexión. Intenta nuevamente.");
+    }
+  };
+
+  const handleCancelBooking = async () => {
+    try {
+      const response = await fetch(`/api/bookings/${bookingId}/cancel`, {
+        method: "PATCH",
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setBookingStatus("cancelled");
+        alert("Reserva cancelada");
+      } else {
+        alert(data.message || "Error al cancelar la reserva");
+      }
+    } catch (error) {
+      alert("Error de conexión. Intenta nuevamente.");
     }
   };
 
@@ -111,14 +174,62 @@ export default function BookingForm({ property }) {
               />
             </svg>
           </div>
-          <h3>¡Reserva exitosa!</h3>
-          <p>
-            Tu reserva ha sido procesada correctamente. Recibirás un email de
-            confirmación pronto.
-          </p>
+          <h3>¡Reserva creada exitosamente!</h3>
+          <div className={styles.bookingStatusContainer}>
+            <div className={styles.statusBadge}>
+              <span
+                className={`${styles.statusIndicator} ${
+                  bookingStatus === "confirmed"
+                    ? styles.confirmed
+                    : bookingStatus === "cancelled"
+                    ? styles.cancelled
+                    : styles.pending
+                }`}
+              />
+              Estado:{" "}
+              {bookingStatus === "confirmed"
+                ? "Confirmada"
+                : bookingStatus === "cancelled"
+                ? "Cancelada"
+                : "Pendiente"}
+            </div>
+          </div>
+
+          {bookingStatus === "pending" && (
+            <div className={styles.pendingInfo}>
+              <p>Tu reserva está pendiente de confirmación del anfitrión.</p>
+              <p>Te notificaremos cuando sea aprobada.</p>
+            </div>
+          )}
+
+          {bookingStatus === "confirmed" && (
+            <p>
+              ¡Tu reserva ha sido confirmada! Recibirás un email con los
+              detalles.
+            </p>
+          )}
+
+          {bookingStatus === "cancelled" && (
+            <div className={styles.cancelledInfo}>
+              <p>Tu reserva ha sido cancelada por el anfitrión.</p>
+              <p>Puedes buscar otras opciones disponibles.</p>
+            </div>
+          )}
+
+          {error && (
+            <div className={styles.error}>
+              <p>{error}</p>
+            </div>
+          )}
+
           <button
             className={styles.newBookingButton}
-            onClick={() => setSuccess(false)}
+            onClick={() => {
+              setSuccess(false);
+              setBookingId(null);
+              setBookingStatus("");
+              setError("");
+            }}
           >
             Hacer nueva reserva
           </button>
@@ -212,6 +323,15 @@ export default function BookingForm({ property }) {
       </form>
 
       <p className={styles.disclaimer}>No se te cobrará todavía</p>
+
+      {/* Modal de solicitud de reserva */}
+      <BookingRequestModal
+        isOpen={showModal}
+        onClose={() => setShowModal(false)}
+        bookingData={bookingRequestData}
+        onConfirm={handleConfirmBooking}
+        onCancel={handleCancelBooking}
+      />
     </div>
   );
 }

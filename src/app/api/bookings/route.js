@@ -77,14 +77,18 @@ export async function POST(request) {
       );
     }
 
-    // Verificar disponibilidad (no hay reservas confirmadas en las mismas fechas)
+    // Verificar disponibilidad (no hay reservas pendientes o confirmadas en las mismas fechas)
     const conflictingBookings = await query(
       `
             SELECT id 
             FROM bookings 
             WHERE property_id = $1 
             AND status IN ('pending', 'confirmed')
-            AND NOT (check_out <= $2 OR check_in >= $3)
+            AND (
+              (check_in <= $2 AND check_out > $2) OR
+              (check_in < $3 AND check_out >= $3) OR
+              (check_in >= $2 AND check_out <= $3)
+            )
         `,
       [propertyId, checkIn, checkOut]
     );
@@ -127,18 +131,40 @@ export async function POST(request) {
       [propertyId, guestId, checkIn, checkOut, guests, totalPrice]
     );
 
+    // Obtener información adicional para la respuesta
+    const bookingDetails = await query(
+      `
+            SELECT 
+                b.*,
+                p.title as property_title,
+                ph.first_name || ' ' || ph.last_name as host_name,
+                g.first_name || ' ' || g.last_name as guest_name
+            FROM bookings b
+            JOIN properties p ON b.property_id = p.id
+            JOIN users ph ON p.host_id = ph.id
+            JOIN users g ON b.guest_id = g.id
+            WHERE b.id = $1
+        `,
+      [booking[0].id]
+    );
+
+    const bookingInfo = bookingDetails[0];
+
     return NextResponse.json({
       success: true,
       message: "Reserva creada exitosamente",
       booking: {
-        id: booking[0].id,
-        propertyId: booking[0].property_id,
-        checkIn: booking[0].check_in,
-        checkOut: booking[0].check_out,
-        guests: booking[0].guests,
-        totalPrice: parseFloat(booking[0].total_price),
-        status: booking[0].status,
-        createdAt: booking[0].created_at,
+        id: bookingInfo.id,
+        propertyId: bookingInfo.property_id,
+        checkIn: bookingInfo.check_in,
+        checkOut: bookingInfo.check_out,
+        guests: bookingInfo.guests,
+        totalPrice: parseFloat(bookingInfo.total_price),
+        status: bookingInfo.status,
+        createdAt: bookingInfo.created_at,
+        propertyTitle: bookingInfo.property_title,
+        hostName: bookingInfo.host_name,
+        guestName: bookingInfo.guest_name,
       },
     });
   } catch (error) {

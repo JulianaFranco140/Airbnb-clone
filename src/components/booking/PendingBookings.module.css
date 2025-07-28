@@ -1,0 +1,180 @@
+/* Contenedor principal */
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Header */
+.header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.badge {
+  background-color: #ff5a5f;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  min-width: 20px;
+  text-align: center;
+}
+
+/* Loading */
+.loading {
+  text-align: center;
+  padding: 40px;
+  color: #6b7280;
+  font-size: 1.1rem;
+}
+
+/* Estado vacío */
+.empty {
+  text-align: center;
+  padding: 60px 20px;
+  background-color: #f9fafb;
+  border-radius: 12px;
+  border: 2px dashed #d1d5db;
+}
+
+.empty p {
+  margin: 0;
+  color: #6b7280;
+  font-size: 1.1rem;
+}
+
+/* Lista de reservas */
+.bookingsList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Tarjeta de reserva */
+.bookingCard {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+}
+
+.bookingCard:hover {
+  border-color: #ff5a5f;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  transform: translateY(-1px);
+}
+
+/* Información de la reserva */
+.bookingInfo {
+  flex: 1;
+}
+
+.bookingInfo h3 {
+  margin: 0 0 8px 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.bookingInfo p {
+  margin: 4px 0;
+  color: #6b7280;
+  line-height: 1.4;
+}
+
+.guest {
+  color: #374151 !important;
+}
+
+.dates {
+  color: #6b7280 !important;
+}
+
+.price {
+  color: #ff5a5f !important;
+  font-weight: 600;
+}
+
+/* Estado de la reserva */
+.status {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.pendingBadge {
+  background-color: #fbbf24;
+  color: #92400e;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+}
+
+.arrow {
+  font-size: 1.2rem;
+  color: #6b7280;
+  transition: all 0.2s;
+}
+
+.bookingCard:hover .arrow {
+  color: #ff5a5f;
+  transform: translateX(4px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .container {
+    padding: 16px;
+  }
+  
+  .bookingCard {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  
+  .status {
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  .bookingInfo h3 {
+    font-size: 1.1rem;
+  }
+  
+  .bookingInfo p {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  
+  .bookingCard {
+    padding: 16px;
+  }
+}

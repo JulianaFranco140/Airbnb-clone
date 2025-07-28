@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
-import Link from 'next/link';
-import { Logo } from '../ui';
-import SearchBar from './SearchBar';
-import UserMenu from './UserMenu';
-import styles from './Header.module.css';
+import { useState, useEffect } from "react";
+import Link from "next/link";
+import { Logo } from "../ui";
+import SearchBar from "./SearchBar";
+import UserMenu from "./UserMenu";
+import styles from "./Header.module.css";
 
 export default function Header() {
   const [user, setUser] = useState(null);
@@ -13,12 +13,12 @@ export default function Header() {
 
   useEffect(() => {
     // Verificar si hay un usuario logueado
-    const userData = localStorage.getItem('user');
+    const userData = localStorage.getItem("user");
     if (userData) {
       try {
         setUser(JSON.parse(userData));
       } catch (error) {
-        localStorage.removeItem('user');
+        localStorage.removeItem("user");
       }
     }
     setLoading(false);
@@ -26,7 +26,7 @@ export default function Header() {
 
   const handleLogout = () => {
     // Logout simple
-    localStorage.removeItem('user');
+    localStorage.removeItem("user");
     setUser(null);
     window.location.reload(); // Recargar página para limpiar estado
   };
@@ -41,6 +41,16 @@ export default function Header() {
 
         {/* Barra de búsqueda - Centro */}
         <SearchBar />
+
+        {/* Enlaces de navegación */}
+        <nav className={styles.nav}>
+          <Link href="/reservas" className={styles.navLink}>
+            Reservas
+          </Link>
+          <Link href="/host" className={styles.navLink}>
+            Pon tu espacio en Airbnb
+          </Link>
+        </nav>
 
         {/* Menu de usuario - Derecha */}
         <UserMenu user={user} onLogout={handleLogout} loading={loading} />

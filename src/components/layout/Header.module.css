@@ -22,10 +22,36 @@
   color: inherit;
 }
 
+/* Navegación */
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.navLink {
+  text-decoration: none;
+  color: #222222;
+  font-weight: 500;
+  font-size: 14px;
+  padding: 10px 12px;
+  border-radius: 22px;
+  transition: all 0.2s ease;
+}
+
+.navLink:hover {
+  background-color: #f7f7f7;
+  color: #222222;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .container {
     padding: 0 16px;
     height: 70px;
+  }
+  
+  .nav {
+    display: none; /* Ocultar navegación en móvil */
   }
 }

@@ -195,6 +195,93 @@
   background: #f7f7f7;
 }
 
+/* Booking status styles */
+.bookingStatusContainer {
+  margin: 16px 0;
+}
+
+.statusBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #f7f7f7;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.statusIndicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.statusIndicator.pending {
+  background: #ff9500;
+}
+
+.statusIndicator.confirmed {
+  background: #00a699;
+}
+
+.statusIndicator.cancelled {
+  background: #ff5a5f;
+}
+
+.pendingInfo {
+  margin: 16px 0;
+  text-align: center;
+}
+
+.pendingInfo p {
+  font-size: 14px;
+  color: #717171;
+  margin: 0 0 16px 0;
+}
+
+.cancelledInfo {
+  margin: 16px 0;
+  text-align: center;
+  padding: 16px;
+  background-color: #fff2f2;
+  border-radius: 8px;
+  border-left: 4px solid #ff5a5f;
+}
+
+.cancelledInfo p {
+  font-size: 14px;
+  color: #d73502;
+  margin: 0 0 8px 0;
+}
+
+.cancelledInfo p:last-child {
+  margin-bottom: 0;
+}
+
+.confirmButton {
+  background: #00a699;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 12px 24px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  margin-bottom: 16px;
+}
+
+.confirmButton:hover:not(:disabled) {
+  background: #008b82;
+}
+
+.confirmButton:disabled {
+  background: #dddddd;
+  color: #717171;
+  cursor: not-allowed;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .bookingCard {
