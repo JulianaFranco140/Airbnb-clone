@@ -1,0 +1,213 @@
+.bookingCard {
+  background: #ffffff;
+  border: 1px solid #dddddd;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 100px;
+}
+
+.priceHeader {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #ebebeb;
+}
+
+.price {
+  font-size: 22px;
+  font-weight: 600;
+  color: #222222;
+}
+
+.period {
+  font-size: 16px;
+  color: #717171;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.dateInputs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border: 1px solid #b0b0b0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.dateInputs .inputGroup:first-child {
+  border-right: 1px solid #b0b0b0;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #222222;
+  padding: 12px 12px 0 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.input {
+  border: none;
+  padding: 4px 12px 12px 12px;
+  font-size: 16px;
+  color: #222222;
+  background: transparent;
+  outline: none;
+}
+
+.inputGroup:not(.dateInputs .inputGroup) {
+  border: 1px solid #b0b0b0;
+  border-radius: 8px;
+}
+
+.inputGroup:not(.dateInputs .inputGroup) .input {
+  padding: 16px 12px;
+}
+
+.input:focus {
+  border-color: #222222;
+}
+
+.input[type="date"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+}
+
+.error {
+  background: #ffeaea;
+  border: 1px solid #ff385c;
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.error p {
+  color: #c13515;
+  font-size: 14px;
+  margin: 0;
+}
+
+.pricing {
+  padding: 16px 0;
+  border-top: 1px solid #ebebeb;
+  border-bottom: 1px solid #ebebeb;
+}
+
+.pricingRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  color: #222222;
+}
+
+.total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+  font-size: 16px;
+  color: #222222;
+  padding-top: 12px;
+  border-top: 1px solid #ebebeb;
+}
+
+.reserveButton {
+  background: linear-gradient(to right, #e61e4d 0%, #e31c5f 50%, #d70466 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 14px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.reserveButton:hover:not(:disabled) {
+  background: linear-gradient(to right, #d50027 0%, #d50342 50%, #c5004b 100%);
+}
+
+.reserveButton:disabled {
+  background: #dddddd;
+  color: #717171;
+  cursor: not-allowed;
+}
+
+.disclaimer {
+  text-align: center;
+  font-size: 14px;
+  color: #717171;
+  margin: 16px 0 0 0;
+}
+
+/* Success state */
+.success {
+  text-align: center;
+  padding: 32px 0;
+}
+
+.successIcon {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.success h3 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #222222;
+  margin: 0 0 12px 0;
+}
+
+.success p {
+  font-size: 16px;
+  color: #717171;
+  line-height: 1.4;
+  margin: 0 0 24px 0;
+}
+
+.newBookingButton {
+  background: #ffffff;
+  color: #222222;
+  border: 1px solid #222222;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 12px 24px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.newBookingButton:hover {
+  background: #f7f7f7;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .bookingCard {
+    position: static;
+    margin-top: 32px;
+  }
+  
+  .dateInputs {
+    grid-template-columns: 1fr;
+  }
+  
+  .dateInputs .inputGroup:first-child {
+    border-right: none;
+    border-bottom: 1px solid #b0b0b0;
+  }
+}
