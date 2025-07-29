@@ -121,6 +121,22 @@ async function createTables() {
 }
 
 async function insertSampleData() {
+  // Verificar si ya hay datos en las tablas
+  const existingUsersCount = await query('SELECT COUNT(*) as count FROM users');
+  const existingPropertiesCount = await query('SELECT COUNT(*) as count FROM properties');
+  
+  if (existingUsersCount[0].count > 0) {
+    console.log('ℹ️  Ya existen usuarios en la base de datos, omitiendo inserción de datos de ejemplo');
+    return;
+  }
+
+  if (existingPropertiesCount[0].count > 0) {
+    console.log('ℹ️  Ya existen propiedades en la base de datos, omitiendo inserción de datos de ejemplo');
+    return;
+  }
+
+  console.log('📝 Insertando datos de ejemplo (tablas vacías)...');
+
   // Insertar usuarios de ejemplo
   await query(`
     INSERT INTO users (email, first_name, last_name, is_host) 
@@ -151,12 +167,13 @@ async function insertSampleData() {
   // Insertar propiedades de ejemplo usando los IDs reales
   await query(`
     INSERT INTO properties (
-      host_id, title, property_type, room_type, location, 
+      host_id, title, description, property_type, room_type, location, 
       price_per_night, guests, bedrooms, bathrooms, images
     ) VALUES 
       (
         ${hostIds[0]},
         'Apartamento moderno en Zona Rosa',
+        'Hermoso apartamento completamente amueblado en el corazón de la Zona Rosa. Ideal para viajeros de negocios o turistas que buscan comodidad y ubicación estratégica. Cuenta con todas las amenidades necesarias para una estancia perfecta.',
         'Apartment',
         'Entire place',
         '{"city": "Bogotá", "country": "Colombia", "address": "Zona Rosa"}',
@@ -169,6 +186,7 @@ async function insertSampleData() {
       (
         ${hostIds[1] || hostIds[0]},
         'Casa campestre con piscina',
+        'Espectacular casa campestre perfecta para escapadas familiares o con amigos. Disfruta de la tranquilidad del campo sin alejarte de la ciudad. La piscina privada y los amplios espacios verdes te brindarán momentos únicos de relajación.',
         'House',
         'Entire place',
         '{"city": "Medellín", "country": "Colombia", "address": "Casa campestre"}',
@@ -181,6 +199,7 @@ async function insertSampleData() {
       (
         ${hostIds[2] || hostIds[0]},
         'Loft en el centro histórico',
+        'Elegante loft ubicado en el encantador centro histórico de Cartagena. Experimenta la magia colonial desde la comodidad de un espacio moderno y sofisticado. A pasos de los mejores restaurantes, bares y sitios turísticos.',
         'Loft',
         'Entire place',
         '{"city": "Cartagena", "country": "Colombia", "address": "Centro histórico"}',
@@ -193,6 +212,7 @@ async function insertSampleData() {
       (
         ${hostIds[3] || hostIds[0]},
         'Apartamento con vista al mar',
+        'Despierta cada mañana con una vista espectacular al mar Caribe. Este moderno apartamento te ofrece la experiencia perfecta de playa urbana en Santa Marta. Disfruta de atardeceres únicos desde tu balcón privado y acceso directo a las mejores playas.',
         'Apartment',
         'Entire place',
         '{"city": "Santa Marta", "country": "Colombia", "address": "Vista al mar"}',
