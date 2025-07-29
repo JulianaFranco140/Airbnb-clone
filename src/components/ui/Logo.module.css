@@ -1,6 +1,10 @@
 .logo {
   display: inline-block;
   text-decoration: none;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 20px;
 }
 
 .logoText {
@@ -8,22 +12,56 @@
   color: #ff385c;
   font-family: 'Inter', 'Circular', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   letter-spacing: -0.02em;
+  display: flex;
+  align-items: center;
+  height: 100%;
 }
 
 .logoImage {
-  height: 1.5em;
+  height: 40px;
+  width: auto;
   vertical-align: middle;
-  padding-inline: 5px;
+  margin-right: 5px;
 }
 
 .small {
-  font-size: 24px;
+  font-size: 20px;
+}
+
+.small .logoImage {
+  height: 32px;
 }
 
 .medium {
-  font-size: 30px;
+  font-size: 24px;
+}
+
+.medium .logoImage {
+  height: 40px;
 }
 
 .large {
-  font-size: 36px;
+  font-size: 28px;
+}
+
+.large .logoImage {
+  height: 48px;
+}
+
+@media (max-width: 768px) {
+  .logoImage {
+    height: 36px;
+  }
+  
+  .small .logoImage {
+    height: 28px;
+  }
+  
+  .medium .logoImage {
+    height: 36px;
+  }
+  
+  .large .logoImage {
+    height: 42px;
+  }
 }

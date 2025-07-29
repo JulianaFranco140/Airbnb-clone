@@ -40,11 +40,6 @@ export default function UserMenu({ user, onLogout, loading }) {
 
   return (
     <div className={styles.userMenuContainer}>
-      {/* Botón "Pon tu espacio en Airbnb" */}
-      <Link href="/host" className={styles.hostLink}>
-        Pon tu espacio en Airbnb
-      </Link>
-
       {/* Menu de usuario */}
       <div className={styles.userMenu} ref={menuRef}>
         <button 
