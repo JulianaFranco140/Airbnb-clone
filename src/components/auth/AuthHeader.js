@@ -5,7 +5,7 @@ export default function AuthHeader({ title, subtitle }) {
   return (
     <div className={styles.header}>
       <div className={styles.logoContainer}>
-        <Logo />
+        <Logo href='/'/>
       </div>
       {title && <h1 className={styles.title}>{title}</h1>}
       {subtitle && <p className={styles.subtitle}>{subtitle}</p>}
