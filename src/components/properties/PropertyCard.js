@@ -65,6 +65,17 @@ export default function PropertyCard({ property }) {
           </svg>
           {propertyData.location.city}, {propertyData.location.address}
         </p>
+
+        <p className={styles.location}>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path
+              d="M5.5 2a2.5 2.5 0 100 5 2.5 2.5 0 000-5zm5 0a2.5 2.5 0 100 5 2.5 2.5 0 000-5zM1 13a4.5 4.5 0 019 0v1H1v-1zm6 0a4.5 4.5 0 019 0v1H7v-1z"
+              fill="#666"
+            />
+          </svg>
+          Huéspedes: {property.guests}
+        </p>
+
         <p className={styles.host}>
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
             <path

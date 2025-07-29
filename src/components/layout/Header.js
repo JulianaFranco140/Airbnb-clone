@@ -7,7 +7,7 @@ import SearchBar from "./SearchBar";
 import UserMenu from "./UserMenu";
 import styles from "./Header.module.css";
 
-export default function Header() {
+export default function Header({ onSearch }) {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -40,15 +40,12 @@ export default function Header() {
         </Link>
 
         {/* Barra de búsqueda - Centro */}
-        <SearchBar />
+        <SearchBar onSearch={onSearch}/>
 
         {/* Enlaces de navegación */}
         <nav className={styles.nav}>
           <Link href="/reservas" className={styles.navLink}>
             Reservas
-          </Link>
-          <Link href="/host" className={styles.navLink}>
-            Pon tu espacio en Airbnb
           </Link>
         </nav>
 
