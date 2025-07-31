@@ -85,6 +85,9 @@ export default function UserMenu({ user, onLogout, loading }) {
                 <Link href="/profile" className={styles.menuItem} onClick={() => setIsMenuOpen(false)}>
                   Perfil
                 </Link>
+                <Link href="/historial" className={styles.menuItem} onClick={() => setIsMenuOpen(false)}>
+                  Historial de reservas
+                </Link>
                 
                 <div className={styles.separator}></div>
             
@@ -107,12 +110,7 @@ export default function UserMenu({ user, onLogout, loading }) {
                   Registrarse
                 </Link>
                 <div className={styles.separator}></div>
-                <Link href="/host" className={styles.menuItem} onClick={() => setIsMenuOpen(false)}>
-                  Pon tu espacio en Airbnb
-                </Link>
-                <Link href="/help" className={styles.menuItem} onClick={() => setIsMenuOpen(false)}>
-                  Centro de ayuda
-                </Link>
+                
               </>
             )}
           </div>

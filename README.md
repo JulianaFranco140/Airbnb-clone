@@ -8,7 +8,6 @@
 
 - Tomas Cordoba
 - Juliana Franco
-- Emmanuel Calad
 
 ## Project description
 

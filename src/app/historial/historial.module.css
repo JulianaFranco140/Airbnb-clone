@@ -1,0 +1,9 @@
+.container {
+  min-height: 100vh;
+  background: #f7f7f7;
+}
+
+.main {
+  background: white;
+  min-height: calc(100vh - 80px);
+}

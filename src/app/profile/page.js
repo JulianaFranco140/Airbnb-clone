@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import Link from 'next/link';
 import styles from './profile.module.css';
 import Button from '../../components/ui/Button';
 
@@ -25,6 +26,11 @@ export default function ProfilePage() {
           <div className={styles.avatarCircle}>{user.firstName[0]}</div>
           <span>Información sobre mí</span>
         </div>
+
+        <Link href="/historial" className={styles.sidebarItem}>
+          <img src="/brifcase.png" alt="Historial de reservas" className={styles.icon} />
+          <span>Historial de reservas</span>
+        </Link>
 
         <div className={styles.sidebarItem}>
           <img src="/brifcase.png" alt="Viajes anteriores" className={styles.icon} />
