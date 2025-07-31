@@ -1,9 +1,12 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useRouter, usePathname } from 'next/navigation';
 import styles from './SearchBar.module.css';
 
 export default function SearchBar({ onSearch }) {
+  const router = useRouter();
+  const pathname = usePathname();
   const [activeTab, setActiveTab] = useState('stays');
   const [searchData, setSearchData] = useState({
     destination: '',
@@ -12,6 +15,25 @@ export default function SearchBar({ onSearch }) {
     guests: 1
   });
 
+  // Restaurar datos de búsqueda cuando se carga el componente en la página principal
+  useEffect(() => {
+    if (pathname === '/') {
+      const savedSearchData = localStorage.getItem('searchData');
+      if (savedSearchData) {
+        try {
+          const parsedData = JSON.parse(savedSearchData);
+          setSearchData(parsedData);
+          // Activar la búsqueda automáticamente con los datos restaurados
+          if (onSearch) {
+            onSearch(parsedData);
+          }
+        } catch (error) {
+          console.error('Error parsing saved search data:', error);
+        }
+      }
+    }
+  }, [pathname, onSearch]);
+
   const handleInputChange = (field, value) => {
     const newSearchData = {
       ...searchData,
@@ -19,14 +41,22 @@ export default function SearchBar({ onSearch }) {
     };
     setSearchData(newSearchData);
     
-    // Llamar onSearch cada vez que cambie un campo (búsqueda en tiempo real)
-    if (onSearch) {
+    // Solo hacer búsqueda en tiempo real si estamos en la página principal
+    if (onSearch && pathname === '/') {
       onSearch(newSearchData);
     }
   };
 
   const handleSearch = () => {
-    // Búsqueda manual al hacer clic en el botón
+    // Si no estamos en la página principal, redirigir allí
+    if (pathname !== '/') {
+      // Guardar los datos de búsqueda en localStorage para transferirlos
+      localStorage.setItem('searchData', JSON.stringify(searchData));
+      router.push('/');
+      return;
+    }
+
+    // Si estamos en la página principal, hacer la búsqueda normal
     if (onSearch) {
       onSearch(searchData);
     }
