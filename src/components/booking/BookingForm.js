@@ -1,15 +1,23 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import BookingRequestModal from "./BookingRequestModal";
 import styles from "./BookingForm.module.css";
 
 export default function BookingForm({ property }) {
+  const [user, setUser] = useState(null);
   const [bookingData, setBookingData] = useState({
     checkIn: "",
     checkOut: "",
     guests: 1,
   });
+
+  useEffect(() => {
+    const storedUser = localStorage.getItem('user');
+    if (storedUser) {
+      setUser(JSON.parse(storedUser));
+    }
+  }, []);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
@@ -67,6 +75,12 @@ export default function BookingForm({ property }) {
       return;
     }
 
+    if (!user) {
+      setError("Debes iniciar sesión para hacer una reserva");
+      setLoading(false);
+      return;
+    }
+
     try {
       const response = await fetch("/api/bookings", {
         method: "POST",
@@ -79,6 +93,7 @@ export default function BookingForm({ property }) {
           checkOut: bookingData.checkOut,
           guests: parseInt(bookingData.guests),
           totalPrice: calculateTotal(),
+          userId: user.id,
         }),
       });
 

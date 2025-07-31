@@ -33,10 +33,9 @@ export async function GET(request) {
         JOIN properties p ON b.property_id = p.id
         JOIN users g ON b.guest_id = g.id
         JOIN users h ON p.host_id = h.id
-        WHERE p.host_id = $1 AND b.status = 'pending'
+        WHERE b.status = 'pending'
         ORDER BY b.created_at DESC
-      `,
-      [hostId]
+      `
     );
 
     const formattedBookings = pendingBookings.map((booking) => ({

@@ -3,11 +3,11 @@ import { query } from "@/lib/db";
 
 export async function POST(request) {
   try {
-    const { propertyId, checkIn, checkOut, guests, totalPrice } =
+    const { propertyId, checkIn, checkOut, guests, totalPrice, userId } =
       await request.json();
 
     // Validaciones básicas
-    if (!propertyId || !checkIn || !checkOut || !guests || !totalPrice) {
+    if (!propertyId || !checkIn || !checkOut || !guests || !totalPrice || !userId) {
       return NextResponse.json(
         {
           success: false,
@@ -103,11 +103,11 @@ export async function POST(request) {
       );
     }
 
-    // Por simplicidad, usaremos un guest_id fijo (usuario demo)
-    // En una implementación real, obtendrías esto de la sesión del usuario
-    const guestResult = await query(`
-            SELECT id FROM users WHERE email = 'usuario.demo@email.com' LIMIT 1
-        `);
+    // Verificar que el usuario existe y está activo
+    const guestResult = await query(
+      `SELECT id, first_name, last_name, email FROM users WHERE id = $1`,
+      [userId]
+    );
 
     if (guestResult.length === 0) {
       return NextResponse.json(

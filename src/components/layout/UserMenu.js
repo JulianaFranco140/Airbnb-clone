@@ -85,16 +85,9 @@ export default function UserMenu({ user, onLogout, loading }) {
                 <Link href="/profile" className={styles.menuItem} onClick={() => setIsMenuOpen(false)}>
                   Perfil
                 </Link>
-                <Link href="/trips" className={styles.menuItem} onClick={() => setIsMenuOpen(false)}>
-                  Viajes
-                </Link>
-                <Link href="/wishlists" className={styles.menuItem} onClick={() => setIsMenuOpen(false)}>
-                  Lista de deseos
-                </Link>
+                
                 <div className={styles.separator}></div>
-                <Link href="/host" className={styles.menuItem} onClick={() => setIsMenuOpen(false)}>
-                  Pon tu espacio en Airbnb
-                </Link>
+            
                 {user.isHost && (
                   <Link href="/host/homes" className={styles.menuItem} onClick={() => setIsMenuOpen(false)}>
                     Gestiona tus alojamientos
