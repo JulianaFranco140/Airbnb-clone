@@ -66,6 +66,9 @@ export default function PropertyGrid({ searchFilters }) {
   useEffect(() => {
     if (searchFilters) {
       fetchProperties(searchFilters);
+    } else if (searchFilters === null) {
+      // Si searchFilters es explícitamente null, cargar todas las propiedades
+      fetchProperties();
     }
   }, [searchFilters, fetchProperties]);
 
@@ -105,7 +108,7 @@ export default function PropertyGrid({ searchFilters }) {
       <h2 className={styles.title}>
         {searchFilters?.destination 
           ? `Propiedades en ${searchFilters.destination}` 
-          : 'Propiedades disponibles'
+          : 'Todas las propiedades disponibles'
         }
       </h2>
       <div className={styles.grid}>

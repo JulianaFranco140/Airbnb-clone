@@ -34,6 +34,23 @@ export default function SearchBar({ onSearch }) {
     }
   }, [pathname, onSearch]);
 
+  // Escuchar cuando se quieren limpiar los filtros desde el componente padre
+  useEffect(() => {
+    const handleClearFilters = (event) => {
+      if (event.detail === 'clearFilters') {
+        setSearchData({
+          destination: '',
+          checkIn: '',
+          checkOut: '',
+          guests: 1
+        });
+      }
+    };
+
+    window.addEventListener('clearSearchFilters', handleClearFilters);
+    return () => window.removeEventListener('clearSearchFilters', handleClearFilters);
+  }, []);
+
   const handleInputChange = (field, value) => {
     const newSearchData = {
       ...searchData,
