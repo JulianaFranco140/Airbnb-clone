@@ -26,17 +26,19 @@
 }
 
 .editButton {
-  padding: 10px 20px;
-  font-size: 14px;
-  border-radius: 8px;
-  background: linear-gradient(135deg, #ff385c 0%, #e91e63 100%);
-  color: white;
-  font-weight: 600;
-  border: none;
-  white-space: nowrap;
-  min-width: auto;
-  width: auto;
-  margin-left: 16px;
+  padding: 10px 20px !important;
+  font-size: 14px !important;
+  border-radius: 8px !important;
+  background: linear-gradient(135deg, #ff385c 0%, #e91e63 100%) !important;
+  color: white !important;
+  font-weight: 600 !important;
+  border: none !important;
+  white-space: nowrap !important;
+  min-width: auto !important;
+  width: auto !important;
+  margin-left: 16px !important;
+  max-width: none !important;
+  flex: none !important;
 }
 
 .profileSection {
@@ -333,8 +335,10 @@
   }
   
   .editButton {
-    align-self: flex-end;
-    margin-left: 0;
-    margin-top: 8px;
+    align-self: flex-end !important;
+    margin-left: 0 !important;
+    margin-top: 8px !important;
+    width: auto !important;
+    max-width: none !important;
   }
 }

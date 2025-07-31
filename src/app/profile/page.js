@@ -179,8 +179,8 @@ export default function ProfilePage() {
               {!user.phone && (
                 <div className={styles.actionItem}>
                   <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                    <rect x="4" y="1" width="8" height="14" rx="2" ry="2" stroke="currentColor" stroke-width="1.5" fill="none"/>
-                    <line x1="6" y1="13" x2="10" y2="13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                    <rect x="4" y="1" width="8" height="14" rx="2" ry="2" stroke="currentColor" strokeWidth="1.5" fill="none"/>
+                    <line x1="6" y1="13" x2="10" y2="13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
                   </svg>
                   Agregar número de teléfono
                 </div>
