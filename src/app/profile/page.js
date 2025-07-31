@@ -26,9 +26,6 @@ export default function ProfilePage() {
       <main className={styles.main}>
         <div className={styles.header}>
           <h1 className={styles.title}>Mi Perfil</h1>
-          <Button variant="outline" size="sm" className={styles.editButton}>
-            Editar Perfil
-          </Button>
         </div>
 
         {/* Profile Header Card */}
