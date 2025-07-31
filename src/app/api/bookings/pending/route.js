@@ -3,8 +3,6 @@ import { query } from "@/lib/db";
 
 export async function GET(request) {
   try {
-    // En una implementación real, obtendrías el host_id de la sesión del usuario
-    // Por simplicidad, usaremos el primer host de la base de datos
     const hostResult = await query(`
       SELECT id FROM users WHERE is_host = true LIMIT 1
     `);
